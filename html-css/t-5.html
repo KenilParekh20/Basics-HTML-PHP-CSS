@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Portfolio</title>
+
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            background-color: #f4f4f4;
+        }
+
+        /* Navbar */
+        nav {
+            background-color: #003366;
+            padding: 15px;
+            text-align: center;
+        }
+
+        nav a {
+            color: white;
+            text-decoration: none;
+            margin: 15px;
+            font-size: 18px;
+        }
+
+        nav a:hover {
+            color: yellow;
+        }
+
+        /* Sections */
+        section {
+            padding: 40px;
+            background-color: white;
+            margin: 20px;
+            border-radius: 10px;
+        }
+
+        h1,
+        h2 {
+            color: #003366;
+        }
+
+        /* Home Section */
+        #home {
+            text-align: center;
+        }
+
+        #home img {
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            border: 4px solid #003366;
+        }
+
+        /* Skills */
+        .skill {
+            background-color: #003366;
+            color: white;
+            padding: 8px 15px;
+            display: inline-block;
+            margin: 5px;
+            border-radius: 20px;
+        }
+
+        /* Project Cards */
+        .project {
+            background-color: #f0f0f0;
+            padding: 15px;
+            margin-top: 15px;
+            border-left: 5px solid #003366;
+        }
+
+        /* Contact Form */
+        input,
+        textarea {
+            width: 100%;
+            padding: 10px;
+            margin-top: 10px;
+            box-sizing: border-box;
+        }
+
+        button {
+            background-color: #003366;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            margin-top: 10px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #0055aa;
+        }
+
+        /* Footer */
+        footer {
+            background-color: #003366;
+            color: white;
+            text-align: center;
+            padding: 15px;
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- Navbar -->
+    <nav>
+        <a href="#home">Home</a>
+        <a href="#about">About</a>
+        <a href="#work">Projects</a>
+        <a href="#contact">Contact</a>
+    </nav>
+
+    <!-- Home Section -->
+    <section id="home">
+
+        <img src="https://via.placeholder.com/150" alt="Profile Photo">
+
+        <h1>Kenil Soni</h1>
+
+        <p>
+            B.Tech ICT Student | Web Developer
+        </p>
+
+    </section>
+
+    <!-- About Section -->
+    <section id="about">
+
+        <h2>About Me</h2>
+
+        <p>
+            Hello! I am a B.Tech ICT student at Marwadi University.
+            I like web development and creating websites using HTML,
+            CSS, JavaScript, PHP and MySQL.
+        </p>
+
+        <h3>My Skills</h3>
+
+        <div class="skill">HTML</div>
+        <div class="skill">CSS</div>
+        <div class="skill">JavaScript</div>
+        <div class="skill">PHP</div>
+        <div class="skill">MySQL</div>
+
+    </section>
+
+    <!-- Projects Section -->
+    <section id="work">
+
+        <h2>My Projects</h2>
+
+        <div class="project">
+            <h3>Book Index Page</h3>
+            <p>
+                Created a simple HTML table-based book index page.
+            </p>
+        </div>
+
+        <div class="project">
+            <h3>Quiz Application</h3>
+            <p>
+                Developed a quiz app using HTML, CSS and JavaScript.
+            </p>
+        </div>
+
+        <div class="project">
+            <h3>Online Clipboard</h3>
+            <p>
+                Built a PHP and MySQL based text sharing application.
+            </p>
+        </div>
+
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact">
+
+        <h2>Contact Me</h2>
+
+        <input type="text" placeholder="Enter Your Name">
+
+        <input type="email" placeholder="Enter Your Email">
+
+        <textarea placeholder="Enter Your Message"></textarea>
+
+        <button onclick="showMessage()">
+            Send Message
+        </button>
+
+        <p id="msg"></p>
+
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        © 2026 Kenil Soni | Portfolio Website
+    </footer>
+
+    <script>
+
+        function showMessage() {
+
+            document.getElementById("msg").innerHTML =
+                "Message Sent Successfully!";
+
+        }
+
+    </script>
+
+</body>
+
+</html>
