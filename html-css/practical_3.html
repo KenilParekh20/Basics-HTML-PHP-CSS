@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Online Quiz</title>
+</head>
+
+<body bgcolor="#f2f2f2">
+
+<center>
+    <h2>Online Quiz</h2>
+</center>
+
+<form>
+    
+    <fieldset>
+        <legend><b>Question 1</b></legend>
+        <p>What is HTML?</p>
+
+        <input type="radio" name="q1" value="0"> Programming Language<br>
+        <input type="radio" name="q1" value="1"> Markup Language<br>
+        <input type="radio" name="q1" value="2"> Database<br>
+        <input type="radio" name="q1" value="3"> OS<br>
+    </fieldset>
+
+    <br>
+
+    <fieldset>
+        <legend><b>Question 2</b></legend>
+        <p>What is CSS used for?</p>
+
+        <input type="radio" name="q2" value="0"> Structure<br>
+        <input type="radio" name="q2" value="1"> Styling<br>
+        <input type="radio" name="q2" value="2"> Logic<br>
+        <input type="radio" name="q2" value="3"> Database<br>
+    </fieldset>
+
+    <br>
+
+    <fieldset>
+        <legend><b>Question 3</b></legend>
+        <p>Which is JavaScript?</p>
+
+        <input type="radio" name="q3" value="0"> Styling<br>
+        <input type="radio" name="q3" value="1"> Logic<br>
+        <input type="radio" name="q3" value="2"> Database<br>
+        <input type="radio" name="q3" value="3"> None<br>
+    </fieldset>
+
+    <br><br>
+
+    <center>
+        <input type="button" value="Submit" onclick="checkScore()">
+    </center>
+
+</form>
+
+<center>
+    <h3 id="result"></h3>
+</center>
+
+<script>
+function checkScore() {
+    var score = 0;
+
+    var answers = {
+        q1: "1",
+        q2: "1",
+        q3: "1"
+    };
+    for (var key in answers) {
+        var options = document.getElementsByName(key);
+
+        for (var i = 0; i < options.length; i++) {
+            if (options[i].checked && options[i].value == answers[key]) {
+                score++;
+            }
+        }
+    }
+    document.getElementById("result").innerHTML =
+        "Your Score: " + score + " / 3";
+}
+</script>
+</body>
+</html>

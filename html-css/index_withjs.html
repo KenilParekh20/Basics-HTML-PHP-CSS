@@ -1,0 +1,57 @@
+<html>  
+<head>
+    <title>
+        
+    </title>
+ <body>
+    <input type = 'text' placeholder="enter anythings..." id='txtmyInput'>
+    <button type ="button" onclick ="myfun()"> click me</button>
+    <p id="doubleNum"></p>
+
+    <script>
+        function myfun() {
+            let inp = document.getElementById('txtmyInput')
+            console.log('button clicked',inp.value)
+            let para = document.getElementById('doubleNum')
+            para.innerText = inp.value * 2
+            let html = ''
+            let num = inp.value
+            for(var i=1;i<11;i++) {
+                html += '<p>' + num + ' x ' + i + ' = ' + (num * i) + '</p>'
+            }
+            para.innerHTML = html
+        }
+    </script>
+    <script>
+       /* let a = 10;
+        let b = 20;
+       console.log(a + "+" + b + "=" + (a + b));
+       console.log(`${a} + ${b} = ${a + b}`);
+       let arr = [4,5.1,true,"Rajkot"]
+        console.log(arr);
+        console.log(arr[0]);
+        console.log(arr[3][2]);
+        console.log(typeof arr);
+        console.log(typeof arr[0]);
+        console.log(typeof arr[3][2]);
+        let user = {
+            name: "Slock Ahuja",
+            age: 20,
+            city: "Rajkot",
+            
+        }
+        console.log(user.name);
+        console.log(user['name']);*/
+
+        let a = 10
+        let b = 20
+        let c = 30
+        function max(a,b,c){
+            return a > b && a > c ? a : b > c ? b : c;
+        }
+        console.log(max(a,b));
+        console.log(max(30,15));
+
+    </script>    
+ </body>
+</html>

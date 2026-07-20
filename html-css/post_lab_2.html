@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Amazon Clone</title>
+
+<style>
+
+body{
+    margin:0;
+    font-family: Arial, Helvetica, sans-serif;
+    background-color:#e3e6e6;
+}
+
+/* ================= NAVBAR ================= */
+
+.navbar{
+    background-color:#131921;
+    color:white;
+    padding:15px 20px;
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+}
+
+.logo{
+    font-size:22px;
+    font-weight:bold;
+}
+
+.nav-links{
+    list-style:none;
+    display:flex;
+    gap:20px;
+}
+
+.nav-links li{
+    cursor:pointer;
+}
+
+.nav-links li:hover{
+    text-decoration:underline;
+}
+
+/* ================= BANNER ================= */
+
+.banner{
+    background: linear-gradient(to right, #1a7f37, #2ea44f);
+    height:300px;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    color:white;
+    text-align:center;
+}
+
+.banner h4{
+    font-size:22px;
+    margin:5px;
+}
+
+.banner h1{
+    font-size:50px;
+    margin:10px 0;
+}
+
+.banner p{
+    font-size:18px;
+}
+
+/* ================= SECTIONS ================= */
+
+.container{
+    display:flex;
+    justify-content:space-around;
+    margin:20px;
+}
+
+.box{
+    background:white;
+    width:23%;
+    padding:15px;
+}
+
+.box h3{
+    font-size:18px;
+}
+
+/* 2x2 Image Grid */
+.image-grid{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:10px;
+    margin-top:10px;
+}
+
+.image-grid img{
+    width:100%;
+    height:120px;
+    object-fit:cover;
+}
+
+.box a{
+    display:block;
+    margin-top:10px;
+    color:#007185;
+    text-decoration:none;
+    font-size:14px;
+}
+
+.box a:hover{
+    color:#c7511f;
+}
+
+</style>
+</head>
+
+<body>
+
+<!-- ================= NAVIGATION BAR ================= -->
+
+<div class="navbar">
+    <div class="logo">amazon.in</div>
+    <ul class="nav-links">
+        <li>All</li>
+        <li>Fresh</li>
+        <li>Best Sellers</li>
+        <li>Today's Deals</li>
+        <li>Mobiles</li>
+        <li>Electronics</li>
+        <li>Fashion</li>
+        <li>Customer Service</li>
+    </ul>
+</div>
+
+<!-- ================= BANNER ================= -->
+
+<div class="banner">
+    <div>
+        <h4>Books for SSC, UPSC & more</h4>
+        <h1>Up to 40% off</h1>
+        <p>Wide Selection | Great Prices</p>
+    </div>
+</div>
+
+<!-- ================= 4 SECTIONS ================= -->
+
+<div class="container">
+
+    <!-- Section 1 -->
+    <div class="box">
+        <h3>Revamp your home in style</h3>
+        <div class="image-grid">
+            <img src="img1.jpg">
+            <img src="img2.jpg">
+            <img src="img3.jpg">
+            <img src="img4.jpg">
+        </div>
+        <a href="#">Explore all</a>
+    </div>
+
+    <!-- Section 2 -->
+    <div class="box">
+        <h3>Appliances for your home</h3>
+        <div class="image-grid">
+            <img src="img5.jpg">
+            <img src="img6.jpg">
+            <img src="img7.jpg">
+            <img src="img8.jpg">
+        </div>
+        <a href="#">Shop now</a>
+    </div>
+
+    <!-- Section 3 -->
+    <div class="box">
+        <h3>Gaming accessories</h3>
+        <div class="image-grid">
+            <img src="img9.jpg">
+            <img src="img10.jpg">
+            <img src="img11.jpg">
+            <img src="img12.jpg">
+        </div>
+        <a href="#">See more</a>
+    </div>
+
+    <!-- Section 4 -->
+    <div class="box">
+        <h3>Fashion essentials</h3>
+        <div class="image-grid">
+            <img src="img13.jpg">
+            <img src="img14.jpg">
+            <img src="img15.jpg">
+            <img src="img16.jpg">
+        </div>
+        <a href="#">Explore more</a>
+    </div>
+
+</div>
+</body>
+</html>

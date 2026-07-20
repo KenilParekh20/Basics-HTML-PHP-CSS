@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Dynamic Table Generator</title>
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:Arial,sans-serif;background:#f0f4f8;padding:30px 20px;color:#333}
+h1{text-align:center;margin-bottom:24px;color:#2c3e50;font-size:1.6rem}
+.controls{display:flex;justify-content:center;gap:16px;flex-wrap:wrap;margin-bottom:28px}
+.controls label{font-weight:bold;font-size:.95rem}
+.controls input[type="number"]{width:70px;padding:8px;border:2px solid #ccc;border-radius:6px;font-size:1rem;text-align:center;margin-left:8px}
+.controls input[type="number"]:focus{border-color:#3498db;outline:none}
+.btn{padding:9px 22px;border:none;border-radius:6px;font-size:.95rem;cursor:pointer;font-weight:bold;transition:background .2s}
+.btn-generate{background:#3498db;color:#fff}
+.btn-generate:hover{background:#2176ae}
+.btn-submit{background:#27ae60;color:#fff}
+.btn-submit:hover{background:#1e8449}
+#table-container{max-width:900px;margin:0 auto;overflow-x:auto}
+table{width:100%;border-collapse:collapse;background:#fff;border-radius:8px;overflow:hidden;box-shadow:0 2px 12px rgba(0,0,0,.1)}
+th{background:#2c3e50;color:#fff;padding:10px;text-align:center;font-size:.9rem}
+td{padding:8px;border:1px solid #e0e0e0;text-align:center}
+td input[type="text"]{width:100%;padding:7px;border:2px solid #ddd;border-radius:5px;font-size:.9rem;transition:border-color .2s}
+td input[type="text"]:focus{border-color:#3498db;outline:none}
+td input.error{border-color:#e74c3c;background:#fff5f5}
+.submit-row{text-align:center;margin-top:18px}
+#message{text-align:center;margin-top:14px;font-weight:bold;font-size:1rem;padding:10px;border-radius:6px;display:none}
+.msg-success{background:#d5f5e3;color:#1e8449}
+.msg-error{background:#fde8e8;color:#c0392b}
+</style>
+</head>
+<body>
+<h1>Dynamic Table Generator</h1>
+<div class="controls">
+<label>Rows: <input type="number" id="rows" value="3" min="1" max="10"></label>
+<label>Columns: <input type="number" id="cols" value="3" min="1" max="8"></label>
+<button class="btn btn-generate" onclick="generateTable()">Generate Table</button>
+</div>
+<div id="table-container"></div>
+<div class="submit-row" id="submit-row" style="display:none">
+<button class="btn btn-submit" onclick="validateAndSubmit()">Submit</button>
+</div>
+<div id="message"></div>
+<script>
+function generateTable(){
+const rows=parseInt(document.getElementById('rows').value);
+const cols=parseInt(document.getElementById('cols').value);
+if(rows<1||rows>10||cols<1||cols>8){alert("Please enter rows (1-10) and columns (1-8).");return;}
+let html='<table><thead><tr><th>#</th>';
+for(let c=1;c<=cols;c++)html+=`<th>Column ${c}</th>`;
+html+='</tr></thead><tbody>';
+for(let r=1;r<=rows;r++){
+html+=`<tr><th>Row ${r}</th>`;
+for(let c=1;c<=cols;c++)html+=`<td><input type="text" id="cell_${r}_${c}" placeholder="R${r}C${c}"></td>`;
+html+='</tr>';
+}
+html+='</tbody></table>';
+document.getElementById('table-container').innerHTML=html;
+document.getElementById('submit-row').style.display='block';
+document.getElementById('message').style.display='none';
+}
+function validateAndSubmit(){
+const rows=parseInt(document.getElementById('rows').value);
+const cols=parseInt(document.getElementById('cols').value);
+let hasError=false;
+document.querySelectorAll('input[type="text"]').forEach(i=>i.classList.remove('error'));
+for(let r=1;r<=rows;r++)for(let c=1;c<=cols;c++){const cell=document.getElementById(`cell_${r}_${c}`);if(cell&&cell.value.trim()===''){cell.classList.add('error');hasError=true;}}
+const msg=document.getElementById('message');
+msg.style.display='block';
+if(hasError){msg.textContent='❌ Please fill all empty fields (highlighted in red)!';msg.className='msg-error';}
+else{msg.textContent='✅ All fields are filled! Data submitted successfully.';msg.className='msg-success';}
+}
+generateTable();
+</script>
+</body>
+</html>

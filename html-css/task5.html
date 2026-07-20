@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>My Portfolio – Profile Page</title>
+<style>
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+:root{--primary:#0f3460;--accent:#e94560;--light:#f5f7fa;--dark:#1a1a2e;--text:#333;--grey:#777}
+html{scroll-behavior:smooth}
+body{font-family:Georgia,serif;color:var(--text);background:var(--light);line-height:1.6}
+nav{position:fixed;top:0;left:0;width:100%;background:var(--dark);display:flex;justify-content:space-between;align-items:center;padding:14px 40px;z-index:999;box-shadow:0 2px 10px rgba(0,0,0,.3)}
+.nav-logo{color:#fff;font-size:1.3rem;font-weight:bold}
+.nav-logo span{color:var(--accent)}
+.nav-links{display:flex;gap:24px;list-style:none}
+.nav-links a{color:#ccc;text-decoration:none;font-size:.95rem;transition:color .2s;font-family:Arial,sans-serif}
+.nav-links a:hover{color:var(--accent)}
+#home{min-height:100vh;background:linear-gradient(135deg,var(--dark) 0%,var(--primary) 100%);display:flex;align-items:center;justify-content:center;padding:100px 20px 60px;text-align:center}
+.hero-content{max-width:600px}
+.profile-img-container{width:160px;height:160px;border-radius:50%;border:5px solid var(--accent);overflow:hidden;margin:0 auto 20px;background:#2c3e50;display:flex;align-items:center;justify-content:center}
+.profile-img-container img{width:100%;height:100%;object-fit:cover}
+.avatar-placeholder{width:100%;height:100%;background:linear-gradient(135deg,#2c3e50,var(--accent));display:flex;align-items:center;justify-content:center;font-size:4rem;color:#fff}
+.hero-content h1{color:#fff;font-size:2.4rem;margin-bottom:8px}
+.hero-content h1 span{color:var(--accent)}
+.role{color:#a0b0c0;font-size:1.1rem;margin-bottom:16px;font-family:Arial,sans-serif}
+.hero-btns{display:flex;gap:14px;justify-content:center;flex-wrap:wrap;margin-top:20px}
+.btn{padding:11px 28px;border-radius:30px;font-size:.95rem;cursor:pointer;text-decoration:none;font-family:Arial,sans-serif;transition:all .25s;border:2px solid transparent;display:inline-block}
+.btn-primary{background:var(--accent);color:#fff;border-color:var(--accent)}
+.btn-outline{background:transparent;color:#fff;border-color:#fff}
+.btn:hover{transform:translateY(-2px);opacity:.9;box-shadow:0 4px 15px rgba(0,0,0,.2)}
+section{padding:70px 20px}
+.section-title{text-align:center;font-size:1.8rem;color:var(--primary);margin-bottom:8px}
+.section-title span{color:var(--accent)}
+.underline{width:60px;height:4px;background:var(--accent);border-radius:4px;margin:0 auto 40px}
+#about{background:#fff}
+.about-grid{max-width:860px;margin:0 auto;display:grid;grid-template-columns:1fr 1fr;gap:40px;align-items:center}
+.about-text p{color:var(--grey);font-size:.98rem;margin-bottom:12px}
+.skills-list{list-style:none;display:flex;flex-wrap:wrap;gap:10px;margin-top:16px}
+.skill-tag{background:var(--light);border:2px solid var(--primary);color:var(--primary);padding:5px 14px;border-radius:20px;font-size:.85rem;font-family:Arial,sans-serif;font-weight:bold}
+.about-stats{display:flex;flex-direction:column;gap:16px}
+.stat-item label{display:block;font-size:.85rem;color:var(--grey);margin-bottom:4px;font-family:Arial}
+.stat-bar-bg{background:#e8eaed;border-radius:10px;height:10px;overflow:hidden}
+.stat-bar{height:10px;border-radius:10px;background:linear-gradient(90deg,var(--primary),var(--accent))}
+@media(max-width:600px){.about-grid{grid-template-columns:1fr}}
+#work{background:var(--light)}
+.slider-wrapper{max-width:800px;margin:0 auto;position:relative}
+.slider{overflow:hidden;border-radius:12px}
+.slides{display:flex;transition:transform .5s ease}
+.slide{min-width:100%;background:var(--dark);border-radius:12px;padding:40px 30px;text-align:center;color:#fff}
+.slide-icon{font-size:3rem;margin-bottom:14px}
+.slide h3{font-size:1.4rem;color:var(--accent);margin-bottom:8px}
+.slide p{font-family:Arial;font-size:.92rem;color:#aaa}
+.slider-dots{text-align:center;margin-top:14px}
+.dot{display:inline-block;width:10px;height:10px;border-radius:50%;background:#ccc;margin:0 4px;cursor:pointer;transition:background .2s}
+.dot.active{background:var(--accent)}
+.slider-btn{position:absolute;top:50%;transform:translateY(-50%);background:var(--accent);color:#fff;border:none;border-radius:50%;width:36px;height:36px;font-size:1rem;cursor:pointer;z-index:10}
+.slider-btn.prev{left:-18px}
+.slider-btn.next{right:-18px}
+.work-grid{max-width:860px;margin:40px auto 0;display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:20px}
+.work-card{background:#fff;border-radius:10px;padding:22px;box-shadow:0 2px 12px rgba(0,0,0,.08);border-top:4px solid var(--accent);transition:transform .2s}
+.work-card:hover{transform:translateY(-4px)}
+.work-card h4{color:var(--primary);margin-bottom:6px}
+.work-card p{font-size:.88rem;color:var(--grey);font-family:Arial}
+#contact{background:#fff}
+.contact-wrap{max-width:700px;margin:0 auto}
+.contact-form{display:flex;flex-direction:column;gap:16px}
+.form-row{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+@media(max-width:500px){.form-row{grid-template-columns:1fr}}
+.contact-form input,.contact-form textarea{width:100%;padding:12px 16px;border:2px solid #dde1e7;border-radius:8px;font-size:.95rem;font-family:Arial;transition:border-color .2s}
+.contact-form input:focus,.contact-form textarea:focus{outline:none;border-color:var(--primary)}
+.contact-form textarea{height:120px;resize:vertical}
+.contact-info{margin-top:30px;display:flex;flex-wrap:wrap;gap:20px;justify-content:center}
+.info-item{display:flex;align-items:center;gap:10px;font-family:Arial;font-size:.9rem;color:var(--grey)}
+.info-icon{font-size:1.3rem}
+#map-section{background:var(--light)}
+.map-container{max-width:860px;margin:0 auto;border-radius:12px;overflow:hidden;box-shadow:0 4px 20px rgba(0,0,0,.12)}
+.map-container iframe{width:100%;height:380px;border:none}
+footer{background:var(--dark);color:#aaa;text-align:center;padding:20px;font-family:Arial;font-size:.85rem}
+footer span{color:var(--accent)}
+</style>
+</head>
+<body>
+<nav>
+<div class="nav-logo">Dev<span>.</span>Portfolio</div>
+<ul class="nav-links">
+<li><a href="#home">Home</a></li>
+<li><a href="#about">About</a></li>
+<li><a href="#work">Work</a></li>
+<li><a href="#contact">Contact</a></li>
+<li><a href="#map-section">Map</a></li>
+</ul>
+</nav>
+<section id="home">
+<div class="hero-content">
+<div class="profile-img-container"><div class="avatar-placeholder">👤</div></div>
+<h1>Yours <span>Kenil Soni</span></h1>
+<p class="role">B.Tech ICT Student | Web Developer | Marwadi University</p>
+<p style="color:#a0b0c0;font-size:.95rem;font-family:Arial;">Passionate about building modern web applications using HTML, CSS, JavaScript, and PHP.</p>
+<div class="hero-btns">
+<a href="#work" class="btn btn-primary">View My Work</a>
+<a href="#contact" class="btn btn-outline">Contact Me</a>
+</div>
+</div>
+</section>
+<section id="about">
+<h2 class="section-title">About <span>Me</span></h2>
+<div class="underline"></div>
+<div class="about-grid">
+<div class="about-text">
+<p>Hello! I am a 4th semester B.Tech (ICT) student at Marwadi University, Rajkot. I love creating websites and web applications from scratch.</p>
+<p>I enjoy working on frontend design and backend logic using PHP and MySQL. Currently learning modern JavaScript and exploring new web technologies.</p>
+<ul class="skills-list">
+<li class="skill-tag">HTML5</li>
+<li class="skill-tag">CSS3</li>
+<li class="skill-tag">JavaScript</li>
+<li class="skill-tag">PHP</li>
+<li class="skill-tag">MySQL</li>
+<li class="skill-tag">jQuery</li>
+</ul>
+</div>
+<div class="about-stats">
+<div class="stat-item"><label>HTML / CSS</label><div class="stat-bar-bg"><div class="stat-bar" style="width:85%"></div></div></div>
+<div class="stat-item"><label>JavaScript</label><div class="stat-bar-bg"><div class="stat-bar" style="width:70%"></div></div></div>
+<div class="stat-item"><label>PHP</label><div class="stat-bar-bg"><div class="stat-bar" style="width:60%"></div></div></div>
+<div class="stat-item"><label>MySQL</label><div class="stat-bar-bg"><div class="stat-bar" style="width:55%"></div></div></div>
+<div class="stat-item"><label>jQuery</label><div class="stat-bar-bg"><div class="stat-bar" style="width:65%"></div></div></div>
+</div>
+</div>
+</section>
+<section id="work">
+<h2 class="section-title">My <span>Work</span></h2>
+<div class="underline"></div>
+<div class="slider-wrapper">
+<button class="slider-btn prev" onclick="moveSlide(-1)">&#8592;</button>
+<div class="slider">
+<div class="slides" id="slides">
+<div class="slide"><div class="slide-icon">📚</div><h3>Book Index Page</h3><p>Designed a styled HTML page showing a book's table of contents using structured HTML tables.</p></div>
+<div class="slide"><div class="slide-icon">📊</div><h3>Dynamic Table Generator</h3><p>Built a dynamic table using JavaScript that takes rows/columns as input and validates all cells.</p></div>
+<div class="slide"><div class="slide-icon">🧠</div><h3>Quiz App</h3><p>Developed an interactive quiz application using HTML, CSS, and JavaScript with score tracking.</p></div>
+<div class="slide"><div class="slide-icon">📋</div><h3>Online Clipboard</h3><p>Created a PHP + MySQL text sharing app using 4-digit codes to store and retrieve text.</p></div>
+</div>
+</div>
+<button class="slider-btn next" onclick="moveSlide(1)">&#8594;</button>
+<div class="slider-dots" id="dots"></div>
+</div>
+<div class="work-grid">
+<div class="work-card"><h4>📝 Task 1 – Book Index</h4><p>HTML table-based book table of contents with styled headers and chapter info.</p></div>
+<div class="work-card"><h4>📊 Task 2 – Dynamic Table</h4><p>User inputs rows/columns, table is generated dynamically with form validation.</p></div>
+<div class="work-card"><h4>🎯 Task 3 – Quiz App</h4><p>10-question IWT quiz with instant feedback, explanation, and score tracking.</p></div>
+<div class="work-card"><h4>🔗 Task 4 – Clipboard App</h4><p>PHP + MySQL online clipboard. Save text, share 4-digit code, retrieve anytime.</p></div>
+<div class="work-card"><h4>🧑‍💻 Task 5 – This Profile</h4><p>Complete personal website with slider, contact, and map – pure HTML/CSS/JS.</p></div>
+</div>
+</section>
+<section id="contact">
+<h2 class="section-title">Contact <span>Me</span></h2>
+<div class="underline"></div>
+<div class="contact-wrap">
+<div class="contact-form" id="contact-form">
+<div class="form-row">
+<input type="text" id="cname" placeholder="Your Name">
+<input type="email" id="cemail" placeholder="Your Email">
+</div>
+<input type="text" id="csubject" placeholder="Subject">
+<textarea id="cmsg" placeholder="Your Message..."></textarea>
+<button class="btn btn-primary" style="align-self:flex-start;border-radius:8px" onclick="submitForm()">Send Message</button>
+<div id="form-msg" style="display:none;padding:10px 16px;border-radius:8px;font-family:Arial;font-size:.95rem"></div>
+</div>
+<div class="contact-info">
+<div class="info-item"><span class="info-icon">📧</span> yourname@marwadiuniversity.ac.in</div>
+<div class="info-item"><span class="info-icon">📞</span> +91 98765 43210</div>
+<div class="info-item"><span class="info-icon">📍</span> Rajkot, Gujarat, India</div>
+</div>
+</div>
+</section>
+<section id="map-section">
+<h2 class="section-title">Find <span>Me</span></h2>
+<div class="underline"></div>
+<div class="map-container">
+<iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3691.5177838484897!2d70.79439847486348!3d22.29566344299854!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3959ca3e0606f003%3A0xfda553a30f83f7a5!2sMarwadi%20University!5e0!3m2!1sen!2sin!4v1710000000000" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+</div>
+</section>
+<footer>Made with <span>♥</span> by <span>Your Name</span> | IWT Assignment – Task 5 | Marwadi University 2025-26</footer>
+<script>
+let currentSlide=0;
+const totalSlides=document.querySelectorAll('.slide').length;
+const dotsContainer=document.getElementById('dots');
+for(let i=0;i<totalSlides;i++){const d=document.createElement('span');d.className='dot'+(i===0?' active':'');d.onclick=()=>goToSlide(i);dotsContainer.appendChild(d);}
+function goToSlide(n){currentSlide=n;document.getElementById('slides').style.transform=`translateX(-${n*100}%)`;document.querySelectorAll('.dot').forEach((d,i)=>d.classList.toggle('active',i===n));}
+function moveSlide(dir){currentSlide=(currentSlide+dir+totalSlides)%totalSlides;goToSlide(currentSlide);}
+setInterval(()=>moveSlide(1),4000);
+function submitForm(){
+const name=document.getElementById('cname').value.trim();
+const email=document.getElementById('cemail').value.trim();
+const subject=document.getElementById('csubject').value.trim();
+const msg=document.getElementById('cmsg').value.trim();
+const fmsg=document.getElementById('form-msg');
+if(!name||!email||!subject||!msg){fmsg.style.display='block';fmsg.style.background='#fde8e8';fmsg.style.color='#a93226';fmsg.textContent='❌ Please fill all fields before sending.';return;}
+const emailPattern=/^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+if(!emailPattern.test(email)){fmsg.style.display='block';fmsg.style.background='#fde8e8';fmsg.style.color='#a93226';fmsg.textContent='❌ Please enter a valid email address.';return;}
+fmsg.style.display='block';fmsg.style.background='#d5f5e3';fmsg.style.color='#1a7a40';
+fmsg.textContent=`✅ Thank you ${name}! Your message has been sent successfully.`;
+['cname','cemail','csubject','cmsg'].forEach(id=>document.getElementById(id).value='');
+}
+window.addEventListener('scroll',()=>{
+const sections=document.querySelectorAll('section[id]');
+const links=document.querySelectorAll('.nav-links a');
+let current='';
+sections.forEach(sec=>{if(window.scrollY>=sec.offsetTop-80)current=sec.id;});
+links.forEach(a=>{a.style.color=a.getAttribute('href')==='#'+current?'#e94560':'#ccc';});
+});
+</script>
+</body>
+</html>

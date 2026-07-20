@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Student Data</title>
+
+    <style>
+        table {
+            width: 60%;
+            border-collapse: collapse;
+            background-color: lightblue;
+        }
+
+        th {
+            background-color: lightgray;
+            padding: 10px;
+        }
+
+        td, th {
+            border: 1px solid black;
+            text-align: center;
+            padding: 10px;
+        }
+
+        .photo {
+            width: 150px;
+            height: 120px;
+            object-fit: cover;
+        }
+    </style>
+</head>
+
+<body>
+
+<table align="center">
+    <caption><h1>Student Data</h1></caption>
+
+    <tr>
+        <th>First Name</th>
+        <th>Last Name</th>
+        <th>Semester</th>
+        <th>Department</th>
+        <th>Photo</th>
+    </tr>
+
+    <tr>
+        <td>Kenil</td>
+        <td>Parekh</td>
+        <td rowspan="2">4th</td>
+        <td rowspan="2">ICT</td>
+        <td><img src="MU1.jpeg" class="photo"></td>
+    </tr>
+    <tr>
+        <td>Dhyey</td>
+        <td>Marvaniya</td>
+        <td><img src="MU2.jpeg" class="photo"></td>
+    </tr>
+</table>
+</body>
+</html>
